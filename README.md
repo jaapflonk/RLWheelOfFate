@@ -1,4 +1,4 @@
-# Wheel of Fate
+<img width="271" height="760" alt="image" src="https://github.com/user-attachments/assets/f7aaff4e-037f-44a6-a0b2-a285964bbdcd" /># Wheel of Fate
 
 A RuneLite plugin that lets you spin a wheel to randomly choose your next boss or activity. Connect with friends so everyone sees the same wheel and result.
 
@@ -20,6 +20,8 @@ A RuneLite plugin that lets you spin a wheel to randomly choose your next boss o
 2. Add bosses from the dropdown or type custom entries
 3. Click **SPIN!** to randomly pick your next activity
 
+<img width="271" height="760" alt="image" src="https://github.com/user-attachments/assets/67921890-0adc-4fb4-8f6e-82a45f15723f" />
+
 ### Playing with Friends
 
 1. Click **Create** to start a new room - a 6-character code is generated and copied to your clipboard
@@ -27,23 +29,6 @@ A RuneLite plugin that lets you spin a wheel to randomly choose your next boss o
 3. Your friend enters the code and clicks **Join**
 4. Now you're synced! Adding/removing entries and spinning the wheel is shared between all players in the room
 
-## Building
-
-Requires JDK 11.
-
-```bash
-./gradlew build
-```
-
-## Testing
-
-Run RuneLite with the plugin loaded:
-
-```bash
-./gradlew run
-```
-
-Or in IntelliJ, run `src/test/java/com/wheeloffate/WheelOfFateTest.java` with JDK 11.
 
 ## Project Structure
 
