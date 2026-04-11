@@ -1,4 +1,3 @@
-<img width="271" height="760" alt="image" src="https://github.com/user-attachments/assets/f7aaff4e-037f-44a6-a0b2-a285964bbdcd" /># Wheel of Fate
 
 A RuneLite plugin that lets you spin a wheel to randomly choose your next boss or activity. Connect with friends so everyone sees the same wheel and result.
 
