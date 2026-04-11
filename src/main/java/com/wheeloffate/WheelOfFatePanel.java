@@ -41,12 +41,12 @@ import net.runelite.client.ui.PluginPanel;
 @Slf4j
 public class WheelOfFatePanel extends PluginPanel
 {
-	private static final Gson GSON = new Gson();
 	private static final Type ENTRY_LIST_TYPE = new TypeToken<List<WheelEntry>>()
 	{
 	}.getType();
 	private static final int PANEL_WIDTH = 225;
 
+	private final Gson gson;
 	private final ConfigManager configManager;
 	private final WheelComponent wheelComponent;
 	private final JPanel entryListPanel;
@@ -73,9 +73,10 @@ public class WheelOfFatePanel extends PluginPanel
 
 	private List<WheelEntry> entries = new ArrayList<>();
 
-	public WheelOfFatePanel(ConfigManager configManager)
+	public WheelOfFatePanel(Gson gson, ConfigManager configManager)
 	{
 		super(false);
+		this.gson = gson;
 		this.configManager = configManager;
 		this.localId = java.util.UUID.randomUUID().toString().substring(0, 8);
 
@@ -444,7 +445,7 @@ public class WheelOfFatePanel extends PluginPanel
 	{
 		try
 		{
-			WheelSyncMessage msg = GSON.fromJson(json, WheelSyncMessage.class);
+			WheelSyncMessage msg = gson.fromJson(json, WheelSyncMessage.class);
 			if (msg == null || msg.getType() == null)
 			{
 				return;
@@ -535,7 +536,7 @@ public class WheelOfFatePanel extends PluginPanel
 		if (relay != null && relay.isConnected())
 		{
 			msg.setSenderId(localId);
-			relay.publish(GSON.toJson(msg));
+			relay.publish(gson.toJson(msg));
 		}
 	}
 
@@ -695,7 +696,7 @@ public class WheelOfFatePanel extends PluginPanel
 		{
 			try
 			{
-				List<WheelEntry> loaded = GSON.fromJson(entriesJson, ENTRY_LIST_TYPE);
+				List<WheelEntry> loaded = gson.fromJson(entriesJson, ENTRY_LIST_TYPE);
 				if (loaded != null)
 				{
 					entries = loaded;
@@ -709,7 +710,7 @@ public class WheelOfFatePanel extends PluginPanel
 
 	private void saveEntries()
 	{
-		configManager.setConfiguration(WheelOfFateConfig.GROUP, WheelOfFateConfig.ENTRIES_KEY, GSON.toJson(entries));
+		configManager.setConfiguration(WheelOfFateConfig.GROUP, WheelOfFateConfig.ENTRIES_KEY, gson.toJson(entries));
 	}
 
 	public void shutdown()

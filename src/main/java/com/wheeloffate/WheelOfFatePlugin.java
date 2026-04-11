@@ -1,5 +1,6 @@
 package com.wheeloffate;
 
+import com.google.gson.Gson;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import javax.inject.Inject;
@@ -23,6 +24,9 @@ public class WheelOfFatePlugin extends Plugin
 	private ClientToolbar clientToolbar;
 
 	@Inject
+	private Gson gson;
+
+	@Inject
 	private ConfigManager configManager;
 
 	private WheelOfFatePanel panel;
@@ -37,7 +41,7 @@ public class WheelOfFatePlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
-		panel = new WheelOfFatePanel(configManager);
+		panel = new WheelOfFatePanel(gson, configManager);
 
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "icon.png");
 
